@@ -1,6 +1,5 @@
 package FileTypeHandlers;
 
-import EventHandlers.EventReceiver;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
