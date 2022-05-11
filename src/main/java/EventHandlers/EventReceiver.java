@@ -20,7 +20,7 @@ public class EventReceiver {
                         + event.getFileType());
             }
         }catch(UnsupportedFileTypeException e){
-            System.out.println(e);
+            throw new RuntimeException(e);
         }
     }
 }
