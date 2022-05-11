@@ -46,14 +46,16 @@ public class Inbetalningstjansten {
             if(openingPost == null){
                 throw new EmptyFileException("The file was empty and could not be red.");
             }
-            if(!openingPost.startsWith("00")){
-                throw new InvalidFormatException("The opening post must start with \"00\"");
-            }
 
+           if(openingPost.length() != 80){
+                throw new InvalidFormatException("The opening post must be of fixed size 80 characters");
+            } else if(!openingPost.startsWith("00")) {
+               throw new InvalidFormatException("The opening post must start with \"00\"");
+           }
             while((line = fileReader.readLine()) != null){
-                if(line.startsWith("30")) {
+                if(line.startsWith("30") && line.length() >= 65) {
                     payments.add(line);
-                } else if (line.startsWith("99")) {
+                } else if (line.startsWith("99") && line.length() == 80) {
                     endPost = line;
                     break;
                 } else{

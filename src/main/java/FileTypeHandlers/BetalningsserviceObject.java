@@ -37,6 +37,9 @@ public class BetalningsserviceObject {
      * @throws InvalidFormatException A custom exception that is thrown if the post is not in the specified format.
      */
     private void parseOpeningPost(String openingPost) throws InvalidFormatException {
+        if(openingPost.length() != 51){
+            throw new InvalidFormatException("The opening post must be of fixed size 51 characters");
+        }
         if(openingPost.charAt(0) != 'O'){
             throw new InvalidFormatException("The opening post must begin with 'O'");
         }

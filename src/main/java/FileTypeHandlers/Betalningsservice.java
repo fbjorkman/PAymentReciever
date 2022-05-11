@@ -65,6 +65,9 @@ public class Betalningsservice {
             for (String paymentLine : payments) {
                 BigDecimal amount;
                 String reference;
+                if(paymentLine.length() != 50){
+                    throw new InvalidFormatException("A payment line must be of fixed size 50 characters.");
+                }
                 if (paymentLine.charAt(0) != 'B') {
                     throw new InvalidFormatException("The payment post must begin with 'B'");
                 }
